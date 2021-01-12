@@ -34,11 +34,9 @@ setTimeout(() => {
 
  */
 
-const spinner= (items) => {
+/* const spinner = (items) => {
   let interval = 100;
-
   for (let item of items) {
-    
     setTimeout(() => {
       process.stdout.write(`\r${item}`);
     }, interval);
@@ -47,6 +45,21 @@ const spinner= (items) => {
   setTimeout(() => {
     process.stdout.write("\n");
   }, interval);
-  //console.log(interval) interval value is being changed!!!!!
 };
-spinner('|/-\\|/-\\|')
+spinner("|/-\\|/-\\|");
+ */
+
+
+const input = process.argv.splice(2).sort((a,b) => (a-b));;
+const nums = input.map(Number);
+const beeper = () => {
+  for (let i = 0; i < nums.length; i++){
+    if (nums[i] > 0 && !isNaN(nums[i])) {
+      let timer = ((nums[i])*1000)
+      setTimeout(() => {
+      process.stdout.write('\x07');
+      }, timer);
+    }
+  }
+}
+beeper();
